@@ -8,7 +8,7 @@
 
 ## Nome do Grupo
 
-## Integrantes: <a href="https://github.com/gabssouzalima">Gabriel Souza Lima</a>, <a href="https://github.com/laridestro-10">Larissa Destro Sousa</a>, <a href="https://github.com/silvaluan2k08-del">Luan Silva Santos</a>, <a href="https://www.linkedin.com/in/PedroHenriqueLuvizottoUehara/">Pedro Luvizotto Uehara</a>
+## Integrantes: <a href="https://github.com/gabssouzalima">Gabriel Souza Lima</a>, <a href="https://github.com/laridestro-10">Larissa Destro Sousa</a>, <a href="https://github.com/silvaluan2k08-del">Luan da Silva Santos</a>, <a href="https://www.linkedin.com/in/PedroHenriqueLuvizottoUehara/">Pedro Luvizotto Uehara</a>
 
 ## Professores Orientadores: <a href="https://www.linkedin.com/in/adriano-valente/?isSelfProfile=false">Adriano Félix Valente</a>, <a href="linkedin.com/in/eduardo-savino-gomes-77833a10/">Eduardo Savino Gomes</a>, <a href="linkedin.com/in/remuniz/">Renata Muniz do Nascimento</a>, <a href="https://www.linkedin.com/in/luisspires/">Luis Fernando dos Santos Pires</a>, <a href="https://www.linkedin.com/in/victorbarq/">Victor Bruno Alexander Rosetti de Quiroz</a>
 
