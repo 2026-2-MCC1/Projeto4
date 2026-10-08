@@ -1,9 +1,3 @@
-```sh
-Utilize o site <https://www.toptal.com/developers/gitignore> para gerar seu arquivo gitignore e apague este campo.
-
-Vide tutoriais do PI.
-```
-
 # FECAP - Fundação de Comércio Álvares Penteado
 
 <p align="center">
@@ -16,7 +10,7 @@ Vide tutoriais do PI.
 
 ## Integrantes: <a href="https://github.com/gabssouzalima">Gabriel Souza Lima</a>, <a href="https://github.com/laridestro-10">Larissa Destro Sousa</a>, <a href="https://github.com/silvaluan2k08-del">Luan Silva Santos</a>, <a href="https://www.linkedin.com/in/PedroHenriqueLuvizottoUehara/">Pedro Luvizotto Uehara</a>
 
-## Professores Orientadores: <a href="https://www.linkedin.com/in/victorbarq/">Dr. Victor Von Doom</a>, <a href="https://www.linkedin.com/in/victorbarq/">Me. Saitama</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Strange</a>, <a href="https://www.linkedin.com/in/victorbarq/">Me. Yoda</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Gero</a>
+## Professores Orientadores: <a href="https://www.linkedin.com/in/adriano-valente/?isSelfProfile=false">Adriano Félix Valente</a>, <a href="linkedin.com/in/eduardo-savino-gomes-77833a10/">Eduardo Savino Gomes</a>, <a href="linkedin.com/in/remuniz/">Renata Muniz do Nascimento</a>, <a href="https://www.linkedin.com/in/luisspires/">Luis Fernando dos Santos Pires</a>, <a href="https://www.linkedin.com/in/victorbarq/">Victor Bruno Alexander Rosetti de Quiroz</a>
 
 ## Descrição
 
@@ -101,7 +95,9 @@ Coloque código do prompt de comnando se for necessário
 ```
 
 ## 📋 Licença/License
-Utilize o link <https://chooser-beta.creativecommons.org/> para fazer uma licença CC BY 4.0.
+Protocolo Arcor © 2026 por Gabriel Souza Lima, Larissa Destro Sousa, Luan Silva Santos e Pedro Luvizotto Uehara.
+
+Este projeto é disponibilizado sob a licença Creative Commons Attribution 4.0 International (CC BY 4.0).
 
 ## 🎓 Referências
 
