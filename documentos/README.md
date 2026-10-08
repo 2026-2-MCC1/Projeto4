@@ -3,29 +3,14 @@
 ## Entrega 1
 <br><br>
 
-### Disciplina 1
+### Algoritmos e Lógica de Programação
 
-<b>ALUNO 1- [Trabalho/Documento](https://github.com/fecaphub/Template_PI/blob/main/documentos/Entrega%201/Disciplina%201/Venha%20para%20a%20FECAP!.txt)</b>
-<br><br>
-<b>ALUNO 1- [Trabalho/Documento](https://github.com/fecaphub/Template_PI/blob/main/documentos/Entrega%201/Disciplina%201/Venha%20para%20a%20FECAP!.txt)</b>
-<br><br>
-<b>ALUNO 1- [Trabalho/Documento](https://github.com/fecaphub/Template_PI/blob/main/documentos/Entrega%201/Disciplina%201/Venha%20para%20a%20FECAP!.txt)</b>
-<br><br>
+<b>Pedro Luvizooto Uehara- [Trabalho](https://github.com/2026-2-MCC1/Projeto4/blob/main/documentos/Entrega%201/Algoritmos%20e%20L%C3%B3gica%20de%20Programa%C3%A7%C3%A3o/EntregaAlgoritmos.zip)</b>
 
-### Disciplina 2
+### Cálculo I
 
-<b>ALUNO 1- [Trabalho/Documento](https://github.com/fecaphub/Template_PI/blob/main/documentos/Entrega%201/Disciplina%201/Venha%20para%20a%20FECAP!.txt)</b>
-<br><br>
-<b>ALUNO 1- [Trabalho/Documento](https://github.com/fecaphub/Template_PI/blob/main/documentos/Entrega%201/Disciplina%201/Venha%20para%20a%20FECAP!.txt)</b>
-<br><br>
-<b>ALUNO 1- [Trabalho/Documento](https://github.com/fecaphub/Template_PI/blob/main/documentos/Entrega%201/Disciplina%201/Venha%20para%20a%20FECAP!.txt)</b>
-<br><br>
+<b>Larissa Destro Sousa - [Trabalho](https://github.com/2026-2-MCC1/Projeto4/blob/main/documentos/Entrega%201/C%C3%A1lculo%20I/Doc%20C%C3%A1lculo.pdf)</b>
 
-### Disciplina 3
+### Ética e Pensamento Computacional
 
-<b>ALUNO 1- [Trabalho/Documento](https://github.com/fecaphub/Template_PI/blob/main/documentos/Entrega%201/Disciplina%201/Venha%20para%20a%20FECAP!.txt)</b>
-<br><br>
-<b>ALUNO 1- [Trabalho/Documento](https://github.com/fecaphub/Template_PI/blob/main/documentos/Entrega%201/Disciplina%201/Venha%20para%20a%20FECAP!.txt)</b>
-<br><br>
-<b>ALUNO 1- [Trabalho/Documento](https://github.com/fecaphub/Template_PI/blob/main/documentos/Entrega%201/Disciplina%201/Venha%20para%20a%20FECAP!.txt)</b>
-<br><br>
+<b>Gabriel Souza Lima- [Documento](https://github.com/2026-2-MCC1/Projeto4/blob/main/documentos/Entrega%201/%C3%89tica%20e%20Pensamento%20Computacional/Mecanicas_Monetizacao_Predatoria.pdf)</b>
