@@ -14,7 +14,7 @@
 
 ## Descrição
 
-<p align="center"> <img src="https://chatgpt.com/backend-api/estuary/content?id=file_000000007ec8820e8d90b02bed672f9a&ts=497643&p=fsns&cid=1&sig=610468a5b32406691afa49db8b6db602d69ac948048c6bb6206ddaf362c655a8&v=0" alt="Protocolo Arcor" border="0"> <br><br> Desenvolvido por Gabriel Souza Lima, Larissa Destro Sousa, Luan da Silva Santos e Pedro Luvizotto Uehara. </p>
+<p align="center"> <img src="imagens/Protocolo_Arcor_Image.png"> <br><br> Desenvolvido por Gabriel Souza Lima, Larissa Destro Sousa, Luan da Silva Santos e Pedro Luvizotto Uehara. </p>
 
 
 <br><br>
@@ -75,9 +75,8 @@ Para mais informações, consulte: https://creativecommons.org/licenses/by-nc-sa
 
 ## 🎓 Referências
 
-Aqui estão as referências usadas no projeto.
-
-1. <a href= "https://github.com/2026-2-MCC1/Projeto4.git">
-2. <a href= "https://sketchfab.com/3d-models/abandoned-factory-23879cef4c464cbfbe4f38436d489972#download"/>
-3. <a href = "https://chooser-beta.creativecommons.org">
-4. <a href = "https://www.arcor.com.br/sobre-a-arcor/nossa-empresa/arcor-brasil/">
+Referências utilizadas no projeto para o desenvolvimento e elaboração:
+1. [Repositório do projeto (GitHub)](https://github.com/2026-2-MCC1/Projeto4.git)
+2. ["Abandoned Factory" por Karim.Fares (Sketchfab)](https://skfb.ly/o7uoL)
+3. [Licença CC BY-NC 4.0 (Creative Commons)](http://creativecommons.org/licenses/by-nc/4.0/)
+4. [Arcor Brasil](https://www.arcor.com.br/sobre-a-arcor/nossa-empresa/arcor-brasil/)
