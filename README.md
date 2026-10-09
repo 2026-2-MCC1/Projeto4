@@ -14,10 +14,7 @@
 
 ## Descrição
 
-<p align="center">
-<img src="https://encurtador.com.br/hblm" alt="Protocolo Arcor" border="0">
-  Game by <a href="http://www.nyphotographic.com/">Nick Youngson</a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> <a href="http://pix4free.org/">Pix4free</a>
-</p>
+<p align="center"> <img src="https://chatgpt.com/backend-api/estuary/content?id=file_000000007ec8820e8d90b02bed672f9a&ts=497643&p=fsns&cid=1&sig=610468a5b32406691afa49db8b6db602d69ac948048c6bb6206ddaf362c655a8&v=0" alt="Protocolo Arcor" border="0"> <br><br> Desenvolvido por Gabriel Souza Lima, Larissa Destro Sousa, Luan da Silva Santos e Pedro Luvizotto Uehara. </p>
 
 
 <br><br>
@@ -82,5 +79,5 @@ Aqui estão as referências usadas no projeto.
 
 1. <a href= "https://github.com/2026-2-MCC1/Projeto4.git">
 2. <a href= "https://sketchfab.com/3d-models/abandoned-factory-23879cef4c464cbfbe4f38436d489972#download"/>
-3. <https://chooser-beta.creativecommons.org/>
-4. <https://assetstore.unity.com/packages/vfx/particles/environment/rain-maker-2d-and-3d-rain-particle-system-for-unity-34938?srsltid=AU7gw4We3YIfw3yoKdu0K8zw3-c5pJBICBJH9XxaPID1U4dGGCSjQjm9/>
+3. <a href = "https://chooser-beta.creativecommons.org">
+4. <a href = "https://www.arcor.com.br/sobre-a-arcor/nossa-empresa/arcor-brasil/">
