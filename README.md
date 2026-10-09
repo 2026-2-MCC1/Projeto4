@@ -6,7 +6,7 @@
 
 # Protocolo Arcor
 
-## Nome do Grupo
+## Jurídico Block Arcor
 
 ## Integrantes: <a href="https://github.com/gabssouzalima">Gabriel Souza Lima</a>, <a href="https://github.com/laridestro-10">Larissa Destro Sousa</a>, <a href="https://github.com/silvaluan2k08-del">Luan da Silva Santos</a>, <a href="https://www.linkedin.com/in/PedroHenriqueLuvizottoUehara/">Pedro Luvizotto Uehara</a>
 
@@ -15,7 +15,7 @@
 ## Descrição
 
 <p align="center">
-<img src="https://pix4free.org/assets/library/2021-01-20/originals/game.jpg" alt="NOME DO JOGO" border="0">
+<img src="https://encurtador.com.br/hblm" alt="Protocolo Arcor" border="0">
   Game by <a href="http://www.nyphotographic.com/">Nick Youngson</a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> <a href="http://pix4free.org/">Pix4free</a>
 </p>
 
@@ -26,86 +26,61 @@ enigmas e obstáculos que exijam o raciocínio lógico do jogador e sua capacida
 
 ## 🛠 Estrutura de pastas
 
--Raiz<br>
-|<br>
-|-->documentos<br>
-  &emsp;|-->antigos<br>
-  &emsp;|Documentação.docx<br>
-|-->executáveis<br>
-  &emsp;|-->windows<br>
-  &emsp;|-->android<br>
-  &emsp;|-->HTML<br>
-|-->imagens<br>
-|-->src<br>
-  &emsp;|-->Backend<br>
-  &emsp;|-->Frontend<br>
-|readme.md<br>
+```text
+Projeto4/
+├── documentos/
+│   ├── Entrega 1/
+│   │   ├── Ética e Pensamento Computacional/
+│   │   ├── Jogos Digitais e Sistemas Digitais Interativos/
+│   │   ├── Algoritmos e Lógica de Programação/
+│   │   ├── Projeto Interdisciplinar: Jogos Digitais/
+│   │   └── Cálculo I/
+│   ├── Entrega 2/
+│   │   ├── Ética e Pensamento Computacional/
+│   │   ├── Jogos Digitais e Sistemas Digitais Interativos/
+│   │   ├── Algoritmos e Lógica de Programação/
+│   │   ├── Cálculo I/
+│   │   ├── Projeto Interdisciplinar: Jogos Digitais
+├── imagens/
+├── src/
+│   ├── Entrega 1/
+│   │   ├── Frontend/
+│   │   ├── Backend/
+│   └── Entrega 2/
+│       ├── Frontend/
+│       ├── Backend/
+└── README.md
 
-A pasta raiz contem dois arquivos que devem ser alterados:
-
-<b>README.MD</b>: Arquivo que serve como guia e explicação geral sobre seu projeto. O mesmo que você está lendo agora.
-
-Há também 4 pastas que seguem da seguinte forma:
-
-<b>documentos</b>: Toda a documentação estará nesta pasta.
-
-<b>executáveis</b>: Binários e executáveis do projeto devem estar nesta pasta.
-
-<b>imagens</b>: Imagens do sistema
-
-<b>src</b>: Pasta que contém o código fonte.
-
-## 🛠 Instalação
-
-<b>Android:</b>
-
-Faça o Download do JOGO.apk no seu celular.
-Execute o APK e siga as instruções de seu telefone.
-
-```sh
-Coloque código do prompt de comnando se for necessário
 ```
-
-<b>Windows:</b>
-
-Não há instalação! Apenas executável!
-Encontre o JOGO.exe na pasta executáveis e execute-o como qualquer outro programa.
-
-```sh
-Coloque código do prompt de comnando se for necessário
-```
-
-<b>HTML:</b>
-
-Não há instalação!
-Encontre o index.html na pasta executáveis e execute-o como uma página WEB (através de algum browser).
 
 ## 💻 Configuração para Desenvolvimento
 
-Descreva como instalar todas as dependências para desenvolvimento e como rodar um test-suite automatizado de algum tipo. Se necessário, faça isso para múltiplas plataformas.
+1. Instale o Unity Hub e faça login em sua conta Unity.
+2. Instale a mesma versão do Unity Editor utilizada pela equipe no desenvolvimento do projeto.
+3. Durante a instalação, selecione os módulos necessários para as plataformas de destino, como Windows ou Android.
+4. Instale um editor compatível com C# e com o desenvolvimento na Unity.
+5. Instale o Git para obter o código-fonte do projeto.
+6. Clone o repositório utilizando o terminal:
+7. git clone <a href= "https://github.com/2026-2-MCC1/Projeto4.git">
+8. Abra o Unity Hub e adicione a pasta que contém o projeto Unity.
+9. Selecione a versão compatível do Unity Editor e aguarde a importação dos arquivos e recursos.
+10. Abra a cena inicial do jogo e pressione Play para executar o projeto no editor.
 
-Para abrir este projeto você necessita das seguintes ferramentas:
-
--<a href="https://godotengine.org/download">GODOT</a>
-
-```sh
-make install
-npm test
-Coloque código do prompt de comnando se for necessário
-```
 
 ## 📋 Licença/License
-Protocolo Arcor © 2026 por Gabriel Souza Lima, Larissa Destro Sousa, Luan Silva Santos e Pedro Luvizotto Uehara.
+Protocolo Arcor © 2026 por Gabriel Souza Lima, Larissa Destro Sousa, Luan da Silva Santos e Pedro Luvizotto Uehara.
 
-Este projeto é disponibilizado sob a licença Creative Commons Attribution 4.0 International (CC BY 4.0).
+Este projeto está licenciado sob a licença Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0).
+
+Esta licença permite compartilhar e adaptar o material para fins não comerciais, desde que os autores originais sejam devidamente creditados e as adaptações sejam distribuídas sob a mesma licença.
+
+Para mais informações, consulte: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
 ## 🎓 Referências
 
 Aqui estão as referências usadas no projeto.
 
-1. <https://github.com/iuricode/readme-template>
-2. <https://github.com/gabrieldejesus/readme-model>
+1. <a href= "https://github.com/2026-2-MCC1/Projeto4.git">
+2. <a href= "https://sketchfab.com/3d-models/abandoned-factory-23879cef4c464cbfbe4f38436d489972#download"/>
 3. <https://chooser-beta.creativecommons.org/>
-4. <https://freesound.org/>
-5. <https://www.toptal.com/developers/gitignore>
-6. Músicas por: <a href="https://freesound.org/people/DaveJf/sounds/616544/"> DaveJf </a> e <a href="https://freesound.org/people/DRFX/sounds/338986/"> DRFX </a> ambas com Licença CC 0.
+4. <https://assetstore.unity.com/packages/vfx/particles/environment/rain-maker-2d-and-3d-rain-particle-system-for-unity-34938?srsltid=AU7gw4We3YIfw3yoKdu0K8zw3-c5pJBICBJH9XxaPID1U4dGGCSjQjm9/>
