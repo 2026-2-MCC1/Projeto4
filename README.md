@@ -6,7 +6,7 @@
 
 # Protocolo Arcor
 
-## Jurídico Block Arcor
+## Nome do Grupo: Jurídico Block Man
 
 ## Integrantes: <a href="https://github.com/gabssouzalima">Gabriel Souza Lima</a>, <a href="https://github.com/laridestro-10">Larissa Destro Sousa</a>, <a href="https://github.com/silvaluan2k08-del">Luan da Silva Santos</a>, <a href="https://www.linkedin.com/in/PedroHenriqueLuvizottoUehara/">Pedro Luvizotto Uehara</a>
 
