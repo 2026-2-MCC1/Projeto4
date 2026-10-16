@@ -181,8 +181,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "CONFIGURA\xC7\xD5ES"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1e37152149a8a4f588450a004375c4cc, type: 2}
-  m_sharedMaterial: {fileID: -5014424805850331926, guid: 1e37152149a8a4f588450a004375c4cc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 25edb60281af54cbda544d70f1955667, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 25edb60281af54cbda544d70f1955667, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -600,8 +600,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "CR\xC9DITOS"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1e37152149a8a4f588450a004375c4cc, type: 2}
-  m_sharedMaterial: {fileID: -5014424805850331926, guid: 1e37152149a8a4f588450a004375c4cc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 25edb60281af54cbda544d70f1955667, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 25edb60281af54cbda544d70f1955667, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -828,8 +828,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 100%
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1e37152149a8a4f588450a004375c4cc, type: 2}
-  m_sharedMaterial: {fileID: -5014424805850331926, guid: 1e37152149a8a4f588450a004375c4cc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 25edb60281af54cbda544d70f1955667, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 25edb60281af54cbda544d70f1955667, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -962,8 +962,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Cen\xE1rio"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1e37152149a8a4f588450a004375c4cc, type: 2}
-  m_sharedMaterial: {fileID: -5014424805850331926, guid: 1e37152149a8a4f588450a004375c4cc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 25edb60281af54cbda544d70f1955667, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 25edb60281af54cbda544d70f1955667, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1096,8 +1096,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Git Hub
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1e37152149a8a4f588450a004375c4cc, type: 2}
-  m_sharedMaterial: {fileID: -5014424805850331926, guid: 1e37152149a8a4f588450a004375c4cc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 25edb60281af54cbda544d70f1955667, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 25edb60281af54cbda544d70f1955667, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1387,8 +1387,8 @@ MonoBehaviour:
     Pedro
     Luvizotto Uehara'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f9fc3e37b2b14e5db1429941587e120, type: 2}
-  m_sharedMaterial: {fileID: 1104029087958045259, guid: 8f9fc3e37b2b14e5db1429941587e120, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 25edb60281af54cbda544d70f1955667, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 25edb60281af54cbda544d70f1955667, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1722,8 +1722,8 @@ MonoBehaviour:
   m_text: "Rain Maker \u2014 2D and 3D Rain Particle System for Unity\nby Jeff Johnson\n\n\"Abandoned
     Factory\" by Karim.Fares \u2014 Sketchfab, licensed under CC BY-NC 4.0.\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f9fc3e37b2b14e5db1429941587e120, type: 2}
-  m_sharedMaterial: {fileID: 1104029087958045259, guid: 8f9fc3e37b2b14e5db1429941587e120, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 25edb60281af54cbda544d70f1955667, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 25edb60281af54cbda544d70f1955667, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1948,8 +1948,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Volume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f9fc3e37b2b14e5db1429941587e120, type: 2}
-  m_sharedMaterial: {fileID: 1104029087958045259, guid: 8f9fc3e37b2b14e5db1429941587e120, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 25edb60281af54cbda544d70f1955667, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 25edb60281af54cbda544d70f1955667, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2129,10 +2129,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1144896240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d404354ad74a94e5eab9f4f30d7e7842, type: 3}
+  m_Script: {fileID: 11500000, guid: a7d2ce94600f54127b96e99918de37d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MenuPrincipal: {fileID: 452614635}
+  MenuPrincipal: {fileID: 2097155890}
   PanelSettings: {fileID: 1103142191}
   PanelCredits: {fileID: 412187604}
   LogoProtocoloArcor: {fileID: 1162161507}
@@ -3133,8 +3133,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Desenvolvedores
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1e37152149a8a4f588450a004375c4cc, type: 2}
-  m_sharedMaterial: {fileID: -5014424805850331926, guid: 1e37152149a8a4f588450a004375c4cc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 25edb60281af54cbda544d70f1955667, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 25edb60281af54cbda544d70f1955667, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -57,6 +57,7 @@ public class MainMenu : MonoBehaviour
     {
         PanelCredits.SetActive(false);
         MenuPrincipal.SetActive(true);
+        LogoProtocoloArcor.SetActive(true);
     }
 
     // Volume
