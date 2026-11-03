@@ -1,15 +1,17 @@
 using UnityEngine;
 
-// Controla o Fúlvio em primeira pessoa: andar, olhar e interagir com o E.
+// Jogador em primeira pessoa: anda, olha e interage com o E.
 public class Jogador : MonoBehaviour
 {
-    public Transform cabeca;          // objeto que tem a câmera dentro
+    public Transform cabeca;               // objeto que tem a câmera dentro
+    public GerenciadorFase gerenciador;    // arraste o GerenciadorFase aqui (Fase 1)
     public float velocidade = 4f;
     public float sensibilidade = 2f;
     public float distanciaInteracao = 3f;
 
     public bool podeMover = true;
     public string textoInteracao = "";
+    public int pocas = 0;                  // quantas poças de baba estou pisando (Fase 2)
 
     CharacterController controle;
     float rotacaoX = 0f;
@@ -36,7 +38,7 @@ public class Jogador : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * sensibilidade;
         float mouseY = Input.GetAxis("Mouse Y") * sensibilidade;
 
-        // gira o corpo para os lados e a cabeça para cima/baixo
+        // o corpo gira para os lados e a cabeça para cima e para baixo
         transform.Rotate(0, mouseX, 0);
         rotacaoX = rotacaoX - mouseY;
         rotacaoX = Mathf.Clamp(rotacaoX, -80f, 80f);
@@ -67,42 +69,63 @@ public class Jogador : MonoBehaviour
         controle.Move(movimento * Time.deltaTime);
     }
 
-
     void Interagir()
     {
         textoInteracao = "";
 
-        RaycastHit hit;
+        if (gerenciador == null)
+        {
+            return;
+        }
 
+        RaycastHit hit;
         if (Physics.Raycast(cabeca.position, cabeca.forward, out hit, distanciaInteracao))
         {
-            Pista pista = hit.collider.GetComponentInParent<Pista>();
-            Painel painel = hit.collider.GetComponentInParent<Painel>();
+            Pista pista = hit.collider.GetComponent<Pista>();
+            Painel painel = hit.collider.GetComponent<Painel>();
 
             if (pista != null)
             {
                 textoInteracao = "[E] Ler bilhete";
-
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    GerenciadorFase.instancia.LerPista(pista);
+                    gerenciador.LerPista(pista);
                 }
             }
 
             if (painel != null && painel.resolvido == false)
             {
                 textoInteracao = "[E] Usar painel de controle";
-
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    GerenciadorFase.instancia.AbrirPainel();
+                    gerenciador.AbrirPainel();
                 }
             }
         }
     }
 
+    // poças de baba (Fase 2): os objetos delas têm "Poca" no nome
+    void OnTriggerEnter(Collider outro)
+    {
+        if (outro.name.Contains("Poca"))
+        {
+            pocas = pocas + 1;
+        }
+    }
 
-    // true = mouse preso no centro (jogando), false = mouse livre (menus)
+    void OnTriggerExit(Collider outro)
+    {
+        if (outro.name.Contains("Poca"))
+        {
+            pocas = pocas - 1;
+            if (pocas < 0)
+            {
+                pocas = 0;
+            }
+        }
+    }
+
+    // true = mouse preso (jogando), false = mouse livre (menus)
     public void TravarMouse(bool travar)
     {
         if (travar)

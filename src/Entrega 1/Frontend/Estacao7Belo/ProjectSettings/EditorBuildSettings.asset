@@ -6,11 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Introducao.unity
+    guid: 5b38e8fc55d4df94ba5ed8488f83aa76
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/Fase1_Estacao7Belo.unity
-    guid: f0ae526bc2e0aad49b1062de64b2ea63
+    guid: 6c6cab5d19cadc84fbcfac43b1256ce8
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

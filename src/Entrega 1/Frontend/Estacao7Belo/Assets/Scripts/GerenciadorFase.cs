@@ -1,11 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// Gerencia a fase: tempo, pistas, painel de código, vitória e derrota.
+// Controla a Fase 1: tempo, pistas, painel de código, vitória e derrota.
 public class GerenciadorFase : MonoBehaviour
 {
-    public static GerenciadorFase instancia;
-
     // referências (arrastadas na cena)
     public Jogador jogador;
     public Painel painel;
@@ -16,6 +14,9 @@ public class GerenciadorFase : MonoBehaviour
 
     public float tempoTotal = 120f;
 
+    // usado pela introdução da história: enquanto for true, o tempo não corre
+    public bool emIntroducao = false;
+
     float tempoRestante;
     string[] pistas = new string[4];
     int pistasEncontradas = 0;
@@ -24,6 +25,8 @@ public class GerenciadorFase : MonoBehaviour
     bool venceu = false;
     bool perdeu = false;
     int pontos = 0;
+    float tempoGasto = 0f;
+    float melhorTempo = 0f;
 
     string digitado = "";
     string msgPainel = "";
@@ -35,37 +38,44 @@ public class GerenciadorFase : MonoBehaviour
     bool deuDica1 = false;
     bool deuDica2 = false;
 
-    // para o efeito de "amanhecer" quando vence
+    // as luzes começam fracas (apagão) e acendem quando vence
     float brilho = 0.3f;
-    float[] intensidadeOriginal;
-    Color corNoite;
-    Color corDia = new Color(0.75f, 0.88f, 1f);
+    public float[] intensidadeOriginal;
 
     void Awake()
     {
-        instancia = this;
         tempoRestante = tempoTotal;
 
-        // começa com as luzes fracas (apagão)
         intensidadeOriginal = new float[luzes.Length];
         for (int i = 0; i < luzes.Length; i++)
         {
             intensidadeOriginal[i] = luzes[i].intensity;
             luzes[i].intensity = intensidadeOriginal[i] * brilho;
         }
-        if (janelas.Length > 0)
-        {
-            corNoite = janelas[0].material.color;
-        }
     }
 
     void Start()
     {
+        if (emIntroducao == false)
+        {
+            ComecarJogo();
+        }
+    }
+
+    // chamado no começo (ou quando a introdução termina)
+    public void ComecarJogo()
+    {
+        emIntroducao = false;
         blockMan.Falar("Olá, técnico Fúlvio! Um apagão travou a fábrica. Ache os bilhetes com as pistas e digite o código no painel antes que o tempo acabe!", 9f);
     }
 
     void Update()
     {
+        if (emIntroducao == true)
+        {
+            return;
+        }
+
         if (venceu == false && perdeu == false)
         {
             tempoRestante = tempoRestante - Time.deltaTime;
@@ -161,7 +171,7 @@ public class GerenciadorFase : MonoBehaviour
 
     void DigitarNoPainel()
     {
-        // aceita digitar no teclado também
+        // também dá para digitar no teclado
         foreach (char c in Input.inputString)
         {
             if (c >= '0' && c <= '9')
@@ -216,10 +226,27 @@ public class GerenciadorFase : MonoBehaviour
         painel.resolvido = true;
         pontos = Mathf.RoundToInt(tempoRestante * 10);
 
+        // guarda o melhor tempo
+        tempoGasto = tempoTotal - tempoRestante;
+        melhorTempo = PlayerPrefs.GetFloat("MelhorTempoFase1", 9999f);
+        if (tempoGasto < melhorTempo)
+        {
+            melhorTempo = tempoGasto;
+            PlayerPrefs.SetFloat("MelhorTempoFase1", melhorTempo);
+            PlayerPrefs.Save();
+        }
+
         jogador.podeMover = false;
         jogador.TravarMouse(false);
 
+        // a fábrica "amanhece"
         telaPainel.material.color = new Color(0.2f, 1f, 0.5f);
+        for (int i = 0; i < janelas.Length; i++)
+        {
+            janelas[i].material.color = new Color(0.75f, 0.88f, 1f);
+        }
+        RenderSettings.ambientLight = new Color(0.5f, 0.5f, 0.55f);
+
         blockMan.Falar("Fábrica reativada! Na próxima parada, procure a fase bônus Central Bon o Bon para ganhar a Bala 7 Belo.", 10f);
     }
 
@@ -234,19 +261,17 @@ public class GerenciadorFase : MonoBehaviour
 
     void AcenderLuzes()
     {
-        // brilho vai de 0.3 até 1 em uns 3 segundos
-        brilho = Mathf.MoveTowards(brilho, 1f, Time.deltaTime / 3f);
-        float t = (brilho - 0.3f) / 0.7f;
+        // o brilho sobe até 1 em uns 3 segundos
+        brilho = brilho + Time.deltaTime / 3f;
+        if (brilho > 1f)
+        {
+            brilho = 1f;
+        }
 
         for (int i = 0; i < luzes.Length; i++)
         {
             luzes[i].intensity = intensidadeOriginal[i] * brilho;
         }
-        for (int i = 0; i < janelas.Length; i++)
-        {
-            janelas[i].material.color = Color.Lerp(corNoite, corDia, t);
-        }
-        RenderSettings.ambientLight = Color.Lerp(new Color(0.03f, 0.03f, 0.05f), new Color(0.5f, 0.5f, 0.55f), t);
     }
 
     void Reiniciar()
@@ -258,6 +283,11 @@ public class GerenciadorFase : MonoBehaviour
 
     void OnGUI()
     {
+        if (emIntroducao == true)
+        {
+            return;
+        }
+
         GUI.skin.box.fontSize = 22;
         GUI.skin.button.fontSize = 24;
         GUI.skin.label.fontSize = 16;
@@ -303,8 +333,10 @@ public class GerenciadorFase : MonoBehaviour
         if (venceu == true)
         {
             GUI.Box(new Rect(meioX - 260, meioY - 130, 520, 70), "FÁBRICA REATIVADA!");
-            GUI.Box(new Rect(meioX - 260, meioY - 55, 520, 50), "Fase 1 concluída - Pontuação: " + pontos);
-            if (GUI.Button(new Rect(meioX - 110, meioY + 20, 220, 60), "Jogar de novo"))
+            GUI.Box(new Rect(meioX - 260, meioY - 55, 520, 50),
+                "Seu tempo: " + tempoGasto.ToString("0.0") + " s  |  Melhor: " + melhorTempo.ToString("0.0") + " s");
+            GUI.Box(new Rect(meioX - 260, meioY, 520, 50), "Pontuação: " + pontos);
+            if (GUI.Button(new Rect(meioX - 110, meioY + 75, 220, 60), "Jogar de novo"))
             {
                 Reiniciar();
             }
