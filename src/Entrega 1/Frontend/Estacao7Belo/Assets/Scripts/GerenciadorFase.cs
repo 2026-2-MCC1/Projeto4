@@ -62,7 +62,7 @@ public class GerenciadorFase : MonoBehaviour
         }
     }
 
-    // chamado no começo (ou quando a introdução termina)
+    // chamado no começo assim que a introdução terminar
     public void ComecarJogo()
     {
         emIntroducao = false;
@@ -259,158 +259,9 @@ public class GerenciadorFase : MonoBehaviour
         blockMan.Falar("O tempo acabou... Tente de novo!", 6f);
     }
 
-    void AcenderLuzes()
-    {
-        // o brilho sobe até 1 em uns 3 segundos
-        brilho = brilho + Time.deltaTime / 3f;
-        if (brilho > 1f)
-        {
-            brilho = 1f;
-        }
-
-        for (int i = 0; i < luzes.Length; i++)
-        {
-            luzes[i].intensity = intensidadeOriginal[i] * brilho;
-        }
-    }
-
     void Reiniciar()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    // ---------- tela (HUD) ----------
-
-    void OnGUI()
-    {
-        if (emIntroducao == true)
-        {
-            return;
-        }
-
-        GUI.skin.box.fontSize = 22;
-        GUI.skin.button.fontSize = 24;
-        GUI.skin.label.fontSize = 16;
-
-        float meioX = Screen.width / 2f;
-        float meioY = Screen.height / 2f;
-
-        if (venceu == false && perdeu == false)
-        {
-            // cronômetro
-            int segundos = Mathf.CeilToInt(tempoRestante);
-            string relogio = (segundos / 60).ToString("00") + ":" + (segundos % 60).ToString("00");
-            GUI.Box(new Rect(meioX - 80, 10, 160, 50), relogio);
-
-            // lista de pistas
-            GUI.Box(new Rect(10, 10, 390, 245), "Pistas " + pistasEncontradas + "/4");
-            for (int i = 0; i < 4; i++)
-            {
-                string linha = (i + 1) + ". ???";
-                if (pistas[i] != null)
-                {
-                    linha = (i + 1) + ". " + pistas[i];
-                }
-                GUI.Label(new Rect(20, 50 + i * 50, 370, 50), linha);
-            }
-
-            // mira e texto de interação
-            if (painelAberto == false)
-            {
-                GUI.Label(new Rect(meioX - 4, meioY - 10, 20, 20), "+");
-                if (jogador.textoInteracao != "")
-                {
-                    GUI.Box(new Rect(meioX - 190, meioY + 40, 380, 45), jogador.textoInteracao);
-                }
-            }
-        }
-
-        if (painelAberto == true)
-        {
-            DesenharPainel(meioX);
-        }
-
-        if (venceu == true)
-        {
-            GUI.Box(new Rect(meioX - 260, meioY - 130, 520, 70), "FÁBRICA REATIVADA!");
-            GUI.Box(new Rect(meioX - 260, meioY - 55, 520, 50),
-                "Seu tempo: " + tempoGasto.ToString("0.0") + " s  |  Melhor: " + melhorTempo.ToString("0.0") + " s");
-            GUI.Box(new Rect(meioX - 260, meioY, 520, 50), "Pontuação: " + pontos);
-            if (GUI.Button(new Rect(meioX - 110, meioY + 75, 220, 60), "Jogar de novo"))
-            {
-                Reiniciar();
-            }
-        }
-
-        if (perdeu == true)
-        {
-            GUI.Box(new Rect(meioX - 260, meioY - 130, 520, 70), "TEMPO ESGOTADO");
-            GUI.Box(new Rect(meioX - 260, meioY - 55, 520, 50), "Aperte R ou clique no botão");
-            if (GUI.Button(new Rect(meioX - 110, meioY + 20, 220, 60), "Tentar de novo"))
-            {
-                Reiniciar();
-            }
-        }
-
-        // aviso rápido embaixo da tela
-        if (Time.time < tempoAviso)
-        {
-            GUI.Box(new Rect(meioX - 300, Screen.height - 90, 600, 50), aviso);
-        }
-    }
-
-    void DesenharPainel(float meioX)
-    {
-        GUI.Box(new Rect(meioX - 200, 70, 400, 590), "PAINEL DE CONTROLE");
-
-        // mostra o que já foi digitado
-        string visor = "";
-        for (int i = 0; i < painel.codigoCorreto.Length; i++)
-        {
-            if (i < digitado.Length)
-            {
-                visor = visor + digitado[i] + " ";
-            }
-            else
-            {
-                visor = visor + "_ ";
-            }
-        }
-        GUI.Box(new Rect(meioX - 150, 125, 300, 70), visor);
-
-        // teclado numérico
-        string[] teclas = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "C", "0", "OK" };
-        for (int i = 0; i < teclas.Length; i++)
-        {
-            int linha = i / 3;
-            int coluna = i % 3;
-            Rect posicao = new Rect(meioX - 155 + coluna * 105, 215 + linha * 80, 95, 70);
-
-            if (GUI.Button(posicao, teclas[i]))
-            {
-                if (teclas[i] == "C")
-                {
-                    digitado = "";
-                }
-                else if (teclas[i] == "OK")
-                {
-                    Confirmar();
-                }
-                else
-                {
-                    AdicionarDigito(teclas[i]);
-                }
-            }
-        }
-
-        if (Time.time < tempoMsgPainel)
-        {
-            GUI.Box(new Rect(meioX - 150, 540, 300, 45), msgPainel);
-        }
-
-        if (GUI.Button(new Rect(meioX - 90, 595, 180, 50), "Fechar"))
-        {
-            FecharPainel();
-        }
-    }
 }

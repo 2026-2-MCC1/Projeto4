@@ -52,16 +52,11 @@
     <Compile Include="Assets\Scripts\Pista.cs" />
     <Compile Include="Assets\Scripts\Painel.cs" />
     <Compile Include="Assets\Scripts\NotaManual.cs" />
-    <Compile Include="Assets\Scripts\InteragirFase2.cs" />
     <Compile Include="Assets\Scripts\BlockMan.cs" />
-    <Compile Include="Assets\Scripts\Valvula.cs" />
-    <Compile Include="Assets\Scripts\Balanco.cs" />
-    <Compile Include="Assets\Scripts\GerenciadorFase2.cs" />
     <Compile Include="Assets\Scripts\GerenciadorFase.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\Jogador.cs" />
     <Compile Include="Assets\Scripts\Criadorcano.cs" />
-    <Compile Include="Assets\Scripts\IntroducaoHistoria.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Industrial_Machine_Models\Read_me.txt" />
