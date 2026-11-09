@@ -65,7 +65,10 @@ public class PortaComItem : MonoBehaviour
             foreach (var kv in exigido)
                 inventario.Remover(kv.Key, kv.Value);
 
-        SceneManager.LoadScene(proximaCena);
+        if (GerenciadorFase.Instancia != null)
+            GerenciadorFase.Instancia.Vitoria();
+        else
+            SceneManager.LoadScene(proximaCena);
     }
 
     void OnGUI()
