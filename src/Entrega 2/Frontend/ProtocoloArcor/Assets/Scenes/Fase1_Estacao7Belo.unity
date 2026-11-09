@@ -14187,7 +14187,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eb63b433fbd17454fad6532f542d8d92, type: 2}
+  - {fileID: 2100000, guid: faa14b8e1790643438b13d6bc140b0f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14975,18 +14975,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1916393230}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef2082e15409f854dba33bec4351d445, type: 3}
+  m_Script: {fileID: 11500000, guid: d418853ae2598174f9288fdf57981054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Jogador
   cabeca: {fileID: 549115294}
   gerenciador: {fileID: 145444693}
+  gerenciadorCentral: {fileID: 0}
   velocidade: 4
   sensibilidade: 2
   distanciaInteracao: 3
   raioMira: 0.15
+  camadaInteracao:
+    serializedVersion: 2
+    m_Bits: 0
   podeMover: 1
   textoInteracao: 
   pocas: 0
+  intervaloPasso: 0.5
 --- !u!4 &1916393232
 Transform:
   m_ObjectHideFlags: 0
