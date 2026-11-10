@@ -1,134 +1,220 @@
+
 using UnityEngine;
 
-// Jogador em primeira pessoa: anda, olha e interage com o E.
+// Jogador em primeira pessoa: anda, olha e interage com E.
 public class Jogador : MonoBehaviour
 {
-    public Transform cabeca;               // objeto que tem a câmera dentro
-    public GerenciadorFase gerenciador;    // arraste o GerenciadorFase aqui (Fase 1)
+    public Transform cabeca;
+
+    // Gerenciadores das duas fases
+    public GerenciadorFase gerenciador;
+    public GerenciadorFaseCentral gerenciadorCentral;
+
     public float velocidade = 4f;
     public float sensibilidade = 2f;
     public float distanciaInteracao = 3f;
-    public float raioMira = 0.15f;         // espessura do raio de interação (metros)
+    public float raioMira = 0.15f;
+    public LayerMask camadaInteracao;
 
     public bool podeMover = true;
     public string textoInteracao = "";
-    public int pocas = 0;                  // quantas poças de baba estou pisando (Fase 2)
 
+    public int pocas = 0;
+    public float intervaloPasso = 0.5f;
+
+    float tempoProximoPasso = 0f;
     CharacterController controle;
+
     float rotacaoX = 0f;
     float velocidadeY = 0f;
 
     void Start()
     {
         controle = GetComponent<CharacterController>();
+
+        if (gerenciador == null)
+            gerenciador = FindFirstObjectByType<GerenciadorFase>();
+
+        if (gerenciadorCentral == null)
+            gerenciadorCentral = FindFirstObjectByType<GerenciadorFaseCentral>();
+
+        if (cabeca == null)
+            Debug.LogError("Cabeca não foi atribuída no Jogador!");
+
+        if (controle == null)
+            Debug.LogError("CharacterController não encontrado!");
+
         TravarMouse(true);
     }
 
     void Update()
     {
-        if (podeMover == true)
+        if (podeMover)
         {
             Olhar();
             Andar();
             Interagir();
         }
+        else
+        {
+            textoInteracao = "";
+        }
     }
 
     void Olhar()
     {
+        if (cabeca == null) return;
+
         float mouseX = Input.GetAxis("Mouse X") * sensibilidade;
         float mouseY = Input.GetAxis("Mouse Y") * sensibilidade;
 
-        // o corpo gira para os lados e a cabeça para cima e para baixo
         transform.Rotate(0, mouseX, 0);
-        rotacaoX = rotacaoX - mouseY;
+
+        rotacaoX -= mouseY;
         rotacaoX = Mathf.Clamp(rotacaoX, -80f, 80f);
+
         cabeca.localEulerAngles = new Vector3(rotacaoX, 0, 0);
     }
 
     void Andar()
     {
+        if (controle == null) return;
+
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        Vector3 movimento = transform.right * horizontal + transform.forward * vertical;
-        movimento = movimento * velocidade;
+        Vector3 movimento =
+            transform.right * horizontal +
+            transform.forward * vertical;
+
+        movimento *= velocidade;
 
         if (Input.GetKey(KeyCode.LeftShift))
-        {
-            movimento = movimento * 1.6f;
-        }
+            movimento *= 1.6f;
 
-        // gravidade
+        // Gravidade
         if (controle.isGrounded && velocidadeY < 0)
-        {
             velocidadeY = -2f;
-        }
-        velocidadeY = velocidadeY - 20f * Time.deltaTime;
+
+        velocidadeY -= 20f * Time.deltaTime;
         movimento.y = velocidadeY;
 
         controle.Move(movimento * Time.deltaTime);
+
+        // Sons de passos
+        Vector3 velHorizontal = new Vector3(
+            controle.velocity.x, 0, controle.velocity.z
+        );
+
+        if (controle.isGrounded &&
+            velHorizontal.magnitude > 0.5f &&
+            Time.time >= tempoProximoPasso)
+        {
+            float intervalo = intervaloPasso;
+
+            if (Input.GetKey(KeyCode.LeftShift))
+                intervalo /= 1.6f;
+
+            tempoProximoPasso = Time.time + intervalo;
+
+            if (GerenciadorSom.instancia != null)
+                GerenciadorSom.instancia.TocarPasso();
+        }
     }
 
     void Interagir()
     {
         textoInteracao = "";
 
-        if (gerenciador == null)
+        if (cabeca == null) return;
+
+        int mascara = camadaInteracao.value == 0
+            ? Physics.DefaultRaycastLayers
+            : camadaInteracao.value;
+
+        RaycastHit[] acertos = Physics.SphereCastAll(
+            cabeca.position,
+            raioMira,
+            cabeca.forward,
+            distanciaInteracao,
+            mascara,
+            QueryTriggerInteraction.Collide
+        );
+
+        // Procura primeiro o painel
+        foreach (RaycastHit hit in acertos)
         {
-            return;
+            Painel painel = hit.collider.GetComponentInParent<Painel>();
+
+            if (painel != null)
+            {
+                textoInteracao = "[E] Abrir painel";
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (gerenciador != null)
+                    {
+                        gerenciador.AbrirPainel();
+                    }
+                    else
+                    {
+                        Debug.LogError("GerenciadorFase não encontrado!");
+                    }
+                }
+
+                return;
+            }
         }
 
-        // "raio grosso" (SphereCast): perdoa a mira e ignora triggers
-        RaycastHit hit;
-        if (Physics.SphereCast(cabeca.position, raioMira, cabeca.forward, out hit, distanciaInteracao, ~0, QueryTriggerInteraction.Ignore))
+        // Procura as pistas e balas
+        foreach (RaycastHit hit in acertos)
         {
-            // procura o script no objeto do collider ou no pai dele
             Pista pista = hit.collider.GetComponentInParent<Pista>();
-            Painel painel = hit.collider.GetComponentInParent<Painel>();
 
             if (pista != null)
             {
-                textoInteracao = "[E] Pegar bala";
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    gerenciador.LerPista(pista);
-                }
-            }
+                textoInteracao = "[E] Ler pista";
 
-            if (painel != null && painel.resolvido == false)
-            {
-                textoInteracao = "[E] Usar painel de controle";
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    gerenciador.AbrirPainel();
+                    if (gerenciador != null)
+                    {
+                        gerenciador.LerPista(pista);
+                    }
+                    else if (gerenciadorCentral != null)
+                    {
+                        gerenciadorCentral.PegarBala();
+                    }
+                    else
+                    {
+                        Debug.LogError("Nenhum gerenciador encontrado!");
+                    }
                 }
+
+                return;
             }
         }
     }
 
-    // poças de baba (Fase 2): os objetos delas têm "Poca" no nome
+    // Poças de baba
     void OnTriggerEnter(Collider outro)
     {
         if (outro.name.Contains("Poca"))
-        {
-            pocas = pocas + 1;
-        }
+            pocas++;
     }
 
     void OnTriggerExit(Collider outro)
     {
         if (outro.name.Contains("Poca"))
         {
-            pocas = pocas - 1;
+            pocas--;
+
             if (pocas < 0)
-            {
                 pocas = 0;
-            }
         }
     }
 
-    // true = mouse preso (jogando), false = mouse livre (menus)
+    // Controle do mouse
     public void TravarMouse(bool travar)
     {
         if (travar)

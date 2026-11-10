@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Introducao.unity
     guid: 4f7cf198c4c1a8446be53b82a11ea0bc
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
     path: Assets/Scenes/Fase1_Estacao7Belo.unity
     guid: 69e20f37d934c284bb611c1fd551b590
   m_configObjects:

@@ -1,11 +1,11 @@
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class GerenciadorFase : MonoBehaviour
 {
-    // ---------- referências do mundo (arrastadas na cena) ----------
+    // ---------- referências do mundo ----------
     public Jogador jogador;
     public Painel painel;
     public BlockMan blockMan;
@@ -13,8 +13,8 @@ public class GerenciadorFase : MonoBehaviour
     public Light[] luzes;
     public Renderer[] janelas;
 
-    // ---------- referências da interface (Canvas) ----------
-    public GameObject hud;               // relógio, pistas e mira
+    // ---------- referências da interface ----------
+    public GameObject hud;
     public TMP_Text textoRelogio;
     public TMP_Text textoTituloPistas;
     public TMP_Text[] textosPistas;
@@ -35,11 +35,14 @@ public class GerenciadorFase : MonoBehaviour
 
     // ---------- configurações ----------
     public float tempoTotal = 120f;
-    public string proximaCena = "Fase 2 Plutônica";       // nome EXATO da cena (confira no Inspector)
 
-    // fase bônus: quem vencer em até "tempoParaBonus" segundos vai para a Central Bon o Bon
+    // Nome exato da cena da Zona Plutônica
+    public string proximaCena = "Fase 2 Plutônica";
+
+    // Fase bônus
     public float tempoParaBonus = 60f;
-    public string cenaBonus = "Fase_CentralBonOBon";      // nome EXATO da cena bônus
+    public string cenaBonus = "Fase_CentralBonOBon";
+
     public AudioClip somVitoria;
     public AudioClip somDerrota;
 
@@ -52,6 +55,7 @@ public class GerenciadorFase : MonoBehaviour
     bool venceu = false;
     bool ganhouBonus = false;
     bool perdeu = false;
+
     int pontos = 0;
     float tempoGasto = 0f;
     float melhorTempo = 0f;
@@ -63,7 +67,7 @@ public class GerenciadorFase : MonoBehaviour
     bool deuDica1 = false;
     bool deuDica2 = false;
 
-    // as luzes começam fracas (apagão) e acendem quando vence
+    // ---------- iluminação ----------
     float brilho = 0.3f;
     float[] intensidadeOriginal;
 
@@ -71,8 +75,8 @@ public class GerenciadorFase : MonoBehaviour
     {
         tempoRestante = tempoTotal;
 
-        // guarda a intensidade das luzes e deixa tudo fraco (apagão)
         intensidadeOriginal = new float[luzes.Length];
+
         for (int i = 0; i < luzes.Length; i++)
         {
             intensidadeOriginal[i] = luzes[i].intensity;
@@ -82,30 +86,33 @@ public class GerenciadorFase : MonoBehaviour
 
     void Start()
     {
-        // começa uma nova jornada: o jogador ainda não tem a Bala 7 Belo
         EstadoJogo.NovoJogo();
 
-        // esconde as telas que só aparecem depois
         telaPainelCodigo.SetActive(false);
         telaVitoria.SetActive(false);
         telaDerrota.SetActive(false);
         caixaAviso.SetActive(false);
+
         textoMensagemPainel.text = "";
 
         textoTituloPistas.text = "Pistas 0/5";
+
         for (int i = 0; i < textosPistas.Length; i++)
         {
             textosPistas[i].text = (i + 1) + ". ???";
         }
 
-        blockMan.Falar("Olá, técnico Fúlvio! Um apagão travou a fábrica. Ache os bilhetes com as pistas e digite o código no painel antes que o tempo acabe!", 9f);
+        blockMan.Falar(
+            "Olá, técnico Fúlvio! Um apagão travou a fábrica. Ache os bilhetes com as pistas e digite o código no painel antes que o tempo acabe!",
+            9f
+        );
     }
 
     void Update()
     {
         if (venceu == false && perdeu == false)
         {
-            tempoRestante = tempoRestante - Time.deltaTime;
+            tempoRestante -= Time.deltaTime;
 
             if (tempoRestante <= 0)
             {
@@ -126,7 +133,8 @@ public class GerenciadorFase : MonoBehaviour
             AcenderLuzes();
         }
 
-        if ((venceu == true || perdeu == true) && Input.GetKeyDown(KeyCode.R))
+        if ((venceu == true || perdeu == true) &&
+            Input.GetKeyDown(KeyCode.R))
         {
             Reiniciar();
         }
@@ -134,48 +142,57 @@ public class GerenciadorFase : MonoBehaviour
         AtualizarInterface();
     }
 
-    // dicas do Block Man conforme o tempo passa
+    // ---------- dicas ----------
     void DarDicas()
     {
         if (tempoRestante <= 90 && deuDica1 == false)
         {
             deuDica1 = true;
+
             if (pistasEncontradas < 2)
             {
-                blockMan.Falar("Dica: procure balas 7 belo em cima das máquinas, caixas, esteira e ao redor do mapa. Cada um revela um dígito do código.", 7f);
+                blockMan.Falar(
+                    "Dica: procure balas 7 belo em cima das máquinas, caixas, esteira e ao redor do mapa. Cada um revela um dígito do código.",
+                    7f
+                );
             }
         }
+
         if (tempoRestante <= 45 && deuDica2 == false)
         {
             deuDica2 = true;
-            blockMan.Falar("Faltam 45 segundos! Cada dígito depende do anterior, use as pistas na ordem.", 7f);
+
+            blockMan.Falar(
+                "Faltam 45 segundos! Cada dígito depende do anterior, use as pistas na ordem.",
+                7f
+            );
         }
     }
 
     // ---------- interface ----------
-
-    // atualiza os textos que mudam o tempo todo
     void AtualizarInterface()
     {
-        // relógio no formato 01:45
         int segundos = Mathf.CeilToInt(tempoRestante);
-        textoRelogio.text = (segundos / 60).ToString("00") + ":" + (segundos % 60).ToString("00");
 
-        // o HUD some quando o jogo termina
+        textoRelogio.text =
+            (segundos / 60).ToString("00") + ":" +
+            (segundos % 60).ToString("00");
+
         hud.SetActive(venceu == false && perdeu == false);
 
-        // texto de interação ("[E] Ler bilhete"); some quando o painel está aberto
-        bool mostrarInteracao = painelAberto == false && jogador.textoInteracao != "";
+        bool mostrarInteracao =
+            painelAberto == false &&
+            jogador.textoInteracao != "";
+
         caixaInteracao.SetActive(mostrarInteracao);
+
         if (mostrarInteracao == true)
         {
             textoInteracao.text = jogador.textoInteracao;
         }
 
-        // aviso rápido no fim da tela
         caixaAviso.SetActive(Time.time < tempoAviso);
 
-        // mensagem de erro do painel some depois de um tempo
         if (Time.time >= tempoMsgPainel)
         {
             textoMensagemPainel.text = "";
@@ -189,7 +206,6 @@ public class GerenciadorFase : MonoBehaviour
     }
 
     // ---------- pistas ----------
-
     public void LerPista(Pista pista)
     {
         int posicao = pista.numero - 1;
@@ -197,49 +213,63 @@ public class GerenciadorFase : MonoBehaviour
         if (pistas[posicao] == null)
         {
             pistas[posicao] = pista.texto;
-            pistasEncontradas = pistasEncontradas + 1;
+            pistasEncontradas++;
 
-            textosPistas[posicao].text = pista.numero + ". " + pista.texto;
-            textoTituloPistas.text = "Pistas " + pistasEncontradas + "/5";
+            textosPistas[posicao].text =
+                pista.numero + ". " + pista.texto;
+
+            textoTituloPistas.text =
+                "Pistas " + pistasEncontradas + "/5";
+
             MostrarAviso("Pista " + pista.numero + " encontrada!");
 
             if (pistasEncontradas == 5)
             {
-                blockMan.Falar("Você achou todas as pistas! Corra até o painel de controle e digite o código.", 7f);
+                blockMan.Falar(
+                    "Você achou todas as pistas! Corra até o painel de controle e digite o código.",
+                    7f
+                );
             }
             else if (pistasEncontradas == 1)
             {
-                blockMan.Falar("Boa! Continue procurando os outros bilhetes pela sala.", 5f);
+                blockMan.Falar(
+                    "Boa! Continue procurando os outros bilhetes pela sala.",
+                    5f
+                );
             }
         }
         else
         {
-            MostrarAviso("Pista " + pista.numero + ": " + pista.texto);
+            MostrarAviso(
+                "Pista " + pista.numero + ": " + pista.texto
+            );
         }
     }
 
     // ---------- painel de código ----------
-
     public void AbrirPainel()
     {
         painelAberto = true;
         digitado = "";
+
         AtualizarVisor();
+
         telaPainelCodigo.SetActive(true);
+
         jogador.podeMover = false;
         jogador.TravarMouse(false);
     }
 
-    // ligado ao botão "Fechar"
     public void FecharPainel()
     {
         painelAberto = false;
+
         telaPainelCodigo.SetActive(false);
+
         jogador.podeMover = true;
         jogador.TravarMouse(true);
     }
 
-    // ligado aos botões do teclado numérico (cada botão manda o seu texto)
     public void ApertarTecla(string tecla)
     {
         if (tecla == "C")
@@ -254,10 +284,10 @@ public class GerenciadorFase : MonoBehaviour
         {
             AdicionarDigito(tecla);
         }
+
         AtualizarVisor();
     }
 
-    // também dá para digitar no teclado do computador
     void DigitarNoPainel()
     {
         foreach (char c in Input.inputString)
@@ -268,13 +298,17 @@ public class GerenciadorFase : MonoBehaviour
             }
             else if (c == '\b' && digitado.Length > 0)
             {
-                digitado = digitado.Substring(0, digitado.Length - 1);
+                digitado = digitado.Substring(
+                    0,
+                    digitado.Length - 1
+                );
             }
             else if (c == '\n' || c == '\r')
             {
                 Confirmar();
             }
         }
+
         AtualizarVisor();
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -287,25 +321,26 @@ public class GerenciadorFase : MonoBehaviour
     {
         if (digitado.Length < painel.codigoCorreto.Length)
         {
-            digitado = digitado + digito;
+            digitado += digito;
         }
     }
 
-    // mostra o que foi digitado, com "_" nas posições que faltam
     void AtualizarVisor()
     {
         string visor = "";
+
         for (int i = 0; i < painel.codigoCorreto.Length; i++)
         {
             if (i < digitado.Length)
             {
-                visor = visor + digitado[i] + " ";
+                visor += digitado[i] + " ";
             }
             else
             {
-                visor = visor + "_ ";
+                visor += "_ ";
             }
         }
+
         textoVisor.text = visor;
     }
 
@@ -318,92 +353,125 @@ public class GerenciadorFase : MonoBehaviour
         else
         {
             digitado = "";
+
             textoMensagemPainel.text = "Código incorreto!";
             tempoMsgPainel = Time.time + 1.5f;
-            blockMan.Falar("Código incorreto. Releia as pistas com calma!", 5f);
+
+            blockMan.Falar(
+                "Código incorreto. Releia as pistas com calma!",
+                5f
+            );
         }
     }
 
     // ---------- fim de fase ----------
-
     void Vencer()
     {
         venceu = true;
+
         GerenciadorAudio.ParaMusica();
         GerenciadorAudio.Efeito(somVitoria);
+
         painelAberto = false;
         painel.resolvido = true;
+
         pontos = Mathf.RoundToInt(tempoRestante * 10);
 
-        // guarda o melhor tempo
         tempoGasto = tempoTotal - tempoRestante;
 
-        // passou rápido? libera a fase bônus
-        if (tempoGasto <= tempoParaBonus)
-        {
-            ganhouBonus = true;
-        }
-        melhorTempo = PlayerPrefs.GetFloat("MelhorTempoFase1", 9999f);
+        // Libera bônus somente se concluir em até 60 segundos
+        ganhouBonus = tempoGasto <= tempoParaBonus;
+
+        melhorTempo = PlayerPrefs.GetFloat(
+            "MelhorTempoFase1",
+            9999f
+        );
+
         if (tempoGasto < melhorTempo)
         {
             melhorTempo = tempoGasto;
-            PlayerPrefs.SetFloat("MelhorTempoFase1", melhorTempo);
+
+            PlayerPrefs.SetFloat(
+                "MelhorTempoFase1",
+                melhorTempo
+            );
+
             PlayerPrefs.Save();
         }
 
         jogador.podeMover = false;
         jogador.TravarMouse(false);
 
-        // a fábrica "amanhece"
-        telaPainel.material.color = new Color(0.2f, 1f, 0.5f);
+        telaPainel.material.color =
+            new Color(0.2f, 1f, 0.5f);
+
         for (int i = 0; i < janelas.Length; i++)
         {
-            janelas[i].material.color = new Color(0.75f, 0.88f, 1f);
+            janelas[i].material.color =
+                new Color(0.75f, 0.88f, 1f);
         }
-        RenderSettings.ambientLight = new Color(0.5f, 0.5f, 0.55f);
 
-        // tela de vitória
+        RenderSettings.ambientLight =
+            new Color(0.5f, 0.5f, 0.55f);
+
         telaPainelCodigo.SetActive(false);
+
         string extra = "";
-        if (ganhouBonus == true)
+
+        if (ganhouBonus)
         {
             extra = "\nTempo recorde! Fase bônus liberada!";
         }
-        textoResultado.text = "Seu tempo: " + tempoGasto.ToString("0.0") + " s\n"
-            + "Melhor tempo: " + melhorTempo.ToString("0.0") + " s\n"
-            + "Pontuação: " + pontos + extra;
-        botaoProximaFase.SetActive(proximaCena != "");
+
+        textoResultado.text =
+            "Seu tempo: " + tempoGasto.ToString("0.0") + " s\n" +
+            "Melhor tempo: " + melhorTempo.ToString("0.0") + " s\n" +
+            "Pontuação: " + pontos + extra;
+
+        botaoProximaFase.SetActive(true);
         telaVitoria.SetActive(true);
 
-        if (ganhouBonus == true)
+        if (ganhouBonus)
         {
-            blockMan.Falar("Fábrica reativada em tempo recorde! Siga para a Central Bon o Bon e ganhe a Bala 7 Belo para a Zona Plutônica.", 10f);
+            blockMan.Falar(
+                "Fábrica reativada em tempo recorde! Você desbloqueou a fase bônus Central Bon o Bon!",
+                10f
+            );
         }
         else
         {
-            blockMan.Falar("Fábrica reativada! Siga para a Zona Plutônica.", 10f);
+            blockMan.Falar(
+                "Fábrica reativada! Siga para a Zona Plutônica.",
+                10f
+            );
         }
     }
 
     void Perder()
     {
         perdeu = true;
+
         GerenciadorAudio.ParaMusica();
         GerenciadorAudio.Efeito(somDerrota);
+
         painelAberto = false;
+
         jogador.podeMover = false;
         jogador.TravarMouse(false);
 
         telaPainelCodigo.SetActive(false);
         telaDerrota.SetActive(true);
 
-        blockMan.Falar("O tempo acabou... Tente de novo!", 6f);
+        blockMan.Falar(
+            "O tempo acabou... Tente de novo!",
+            6f
+        );
     }
 
     void AcenderLuzes()
     {
-        // o brilho sobe até 1 em uns 3 segundos
-        brilho = brilho + Time.deltaTime / 3f;
+        brilho += Time.deltaTime / 3f;
+
         if (brilho > 1f)
         {
             brilho = 1f;
@@ -411,23 +479,22 @@ public class GerenciadorFase : MonoBehaviour
 
         for (int i = 0; i < luzes.Length; i++)
         {
-            luzes[i].intensity = intensidadeOriginal[i] * brilho;
+            luzes[i].intensity =
+                intensidadeOriginal[i] * brilho;
         }
     }
 
     // ---------- botões das telas de fim ----------
-
-    // ligado aos botões "Jogar de novo" e "Tentar de novo"
     public void Reiniciar()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(
+            SceneManager.GetActiveScene().name
+        );
     }
 
-    // ligado ao botão "Próxima fase"
     public void IrParaProximaFase()
     {
-        // vai para a bônus só se ganhou e se a cena existe no Build Settings
-        if (ganhouBonus == true)
+        if (ganhouBonus)
         {
             SceneManager.LoadScene(cenaBonus);
         }
