@@ -2761,7 +2761,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2a27661ab9635c440843a3cb93c94383, type: 2}
+  - {fileID: 2100000, guid: 8eb5907637615ee4191e28bb6d6e3522, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3641,7 +3641,7 @@ MonoBehaviour:
   - nomeCena: Fase1_Estacao7Belo
     musica: {fileID: 8300000, guid: c5c8a4c925babea48ba60cc9ad862b77, type: 3}
   volumeMusica: 0.5
-  volumeEfeitos: 0.465
+  volumeEfeitos: 0.544
 --- !u!4 &1854868494
 Transform:
   m_ObjectHideFlags: 0
