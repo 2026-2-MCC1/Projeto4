@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 676f5285531e2fa45aee3b13fe76f54e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - musicaPadrao: {fileID: 8300000, guid: c5c8a4c925babea48ba60cc9ad862b77, type: 3}
+  - somVitoria: {fileID: 8300000, guid: d19e6775c72c4f24ba9132df245922a8, type: 3}
+  - somDerrota: {fileID: 8300000, guid: 8929d86b57ff678448b80d2c9e6a1248, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
