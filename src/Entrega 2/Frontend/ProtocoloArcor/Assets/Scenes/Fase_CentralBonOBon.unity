@@ -776,6 +776,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4258737259943602853, guid: 74fd964aee3445a448b2568ddde7ee88, type: 3}
       insertIndex: -1
       addedObject: {fileID: 550713845}
+    - targetCorrespondingSourceObject: {fileID: 4258737259943602853, guid: 74fd964aee3445a448b2568ddde7ee88, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 550713849}
   m_SourcePrefab: {fileID: 3150474306388093854, guid: 74fd964aee3445a448b2568ddde7ee88, type: 3}
 --- !u!1001 &163725748
 PrefabInstance:
@@ -1667,14 +1670,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Jogador
   cabeca: {fileID: 1213275795}
   gerenciador: {fileID: 0}
-  gerenciadorCentral: {fileID: 0}
+  gerenciadorCentral: {fileID: 302425499}
   velocidade: 4
   sensibilidade: 2
   distanciaInteracao: 3
   raioMira: 0.15
   camadaInteracao:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   podeMover: 1
   textoInteracao: 
   pocas: 0
@@ -2406,6 +2409,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e913b247a36f64b8f09dc244afce53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pista
+  numero: 0
+  texto: 
+--- !u!114 &550713849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550713839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbcaad08aa46ccf458aa086f210d17f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BalaProximaFase
+  proximaCena: Fase2_ZonaPlutonica
+  distancia: 3
+  pegarAoEncostar: 0
 --- !u!1 &557008375
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,6 +18,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Fase_CentralBonOBon.unity
     guid: 6c6cab5d19cadc84fbcfac43b1256ce8
   - enabled: 1
+    path: Assets/Scenes/Fase2_ZonaPlutonica.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Fase3_CamaraTortuguita.unity
+    guid: ce2020a1948e8d449845fe36e1bc8784
+  - enabled: 1
+    path: Assets/Scenes/RankingFinal.unity
+    guid: c1626a7652e879347b5d3099d1092bb0
+  - enabled: 1
     path: Assets/Scenes/Encerramento.unity
     guid: 4786c4857211a5446998ecca91f90bff
   m_configObjects:
