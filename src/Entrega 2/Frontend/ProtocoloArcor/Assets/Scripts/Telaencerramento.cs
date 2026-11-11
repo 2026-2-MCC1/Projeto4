@@ -14,7 +14,7 @@ public class TelaEncerramento : MonoBehaviour
 
     // Nomes das cenas (confira se estão iguais aos do seu projeto)
     public string cenaMenu = "MainMenu";
-    public string cenaPrimeiraFase = "Estacao7Belo";
+    public string cenaPrimeiraFase = "Fase1_Estacao7Belo";
 
     void Start()
     {
@@ -24,48 +24,48 @@ public class TelaEncerramento : MonoBehaviour
 
         float total = 0f;
 
-        // Fase 1
+        // Fase 1: Estação 7 Belo
         if (Tempos.passouFase1)
         {
-            textoFase1.text = "Fase 1: " + Formatar(Tempos.tempoFase1);
+            textoFase1.text = "Estação 7 Belo: " + Formatar(Tempos.tempoFase1);
             total += Tempos.tempoFase1;
         }
         else
         {
-            textoFase1.text = "Fase 1: não concluída";
+            textoFase1.text = "Estação 7 Belo: não concluída";
         }
 
-        // Fase 2
+        // Fase 2: Zona Plutônica
         if (Tempos.passouFase2)
         {
-            textoFase2.text = "Fase 2: " + Formatar(Tempos.tempoFase2);
+            textoFase2.text = "Zona Plutônica: " + Formatar(Tempos.tempoFase2);
             total += Tempos.tempoFase2;
         }
         else
         {
-            textoFase2.text = "Fase 2: não concluída";
+            textoFase2.text = "Zona Plutônica: não concluída";
         }
 
-        // Fase 3 (Central Bon o Bon)
+        // Fase bônus: Central Bon o Bon (opcional)
         if (Tempos.passouFase3)
         {
-            textoFase3.text = "Fase 3: " + Formatar(Tempos.tempoFase3);
+            textoFase3.text = "Central Bon o Bon (bônus): " + Formatar(Tempos.tempoFase3);
             total += Tempos.tempoFase3;
         }
         else
         {
-            textoFase3.text = "Fase 3: não concluída";
+            textoFase3.text = "Central Bon o Bon (bônus): não jogada";
         }
 
-        // Fase 4
+        // Fase 3: Câmara da Tartaruga
         if (Tempos.passouFase4)
         {
-            textoFase4.text = "Fase 4: " + Formatar(Tempos.tempoFase4);
+            textoFase4.text = "Câmara da Tartaruga: " + Formatar(Tempos.tempoFase4);
             total += Tempos.tempoFase4;
         }
         else
         {
-            textoFase4.text = "Fase 4: não concluída";
+            textoFase4.text = "Câmara da Tartaruga: não concluída";
         }
 
         textoTotal.text = "Tempo total: " + Formatar(total);
@@ -84,6 +84,8 @@ public class TelaEncerramento : MonoBehaviour
     public void JogarNovamente()
     {
         Tempos.Zerar();
+        EstadoJogo.NovoJogo();
+        RankingManager.ReiniciarPartida();
         SceneManager.LoadScene(cenaPrimeiraFase);
     }
 

@@ -378,6 +378,8 @@ public class GerenciadorFase : MonoBehaviour
         pontos = Mathf.RoundToInt(tempoRestante * 10);
 
         tempoGasto = tempoTotal - tempoRestante;
+        Tempos.passouFase1 = true;
+        Tempos.tempoFase1 = tempoGasto;
 
         // Libera bônus somente se concluir em até 60 segundos
         ganhouBonus = tempoGasto <= tempoParaBonus;
