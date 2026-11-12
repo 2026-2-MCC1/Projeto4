@@ -26,6 +26,7 @@ enigmas e obstáculos que exijam o raciocínio lógico do jogador e sua capacida
 ```text
 Projeto4/
 ├── documentos/
+├── Projeto_de_Extensao_Protocolo_Arcor-1.pdf
 │   ├── Entrega 1/
 │   │   ├── Ética e Pensamento Computacional/
 │   │   ├── Jogos Digitais e Sistemas Digitais Interativos/
@@ -46,6 +47,8 @@ Projeto4/
 │   └── Entrega 2/
 │       ├── Frontend/
 │       ├── Backend/
+│       ├── Ficha_de_Declaracao_de_Uso_de_IA_FECAP
+
 └── README.md
 
 ```
@@ -76,7 +79,13 @@ Para mais informações, consulte: https://creativecommons.org/licenses/by-nc-sa
 ## 🎓 Referências
 
 Referências utilizadas no projeto para o desenvolvimento e elaboração:
-1. [Repositório do projeto (GitHub)](https://github.com/2026-2-MCC1/Projeto4.git)
-2. ["Abandoned Factory" por Karim.Fares (Sketchfab)](https://skfb.ly/o7uoL)
-3. [Licença CC BY-NC 4.0 (Creative Commons)](http://creativecommons.org/licenses/by-nc/4.0/)
-4. [Arcor Brasil](https://www.arcor.com.br/sobre-a-arcor/nossa-empresa/arcor-brasil/)
+
+1. [Arcor Brasil](https://www.arcor.com.br/sobre-a-arcor/nossa-empresa/arcor-brasil/);
+2. [Industrial Machine Models](https://assetstore.unity.com/packages/3d/environments/industrial/industrial-machine-models-66217?srsltid=AYCX9vLrZzfZPxzC2zL7Jav8zBNZQOmN3tVr7upbUgz9c8QDgbVDpPkr);
+3. [Licença CC BY-NC 4.0 (Creative Commons)](http://creativecommons.org/licenses/by-nc/4.0/);
+4. [Monetização predatória em jogos digitais](https://www.researchgate.net/publication/401084623_A_MONETIZACAO_PREDATORIA_GAMER_COMO_NOVA_FACE_DO_ASSEDIO_DE_CONSUMO_A_EXPOSICAO_DE_CRIANCAS_E_ADOLESCENTES_AS_ESTRATEGIAS_PERSUASIVAS_NO_MERCADO_DE_JOGOS_VIRTUAIS);
+5. [PolyHaven](https://polyhaven.com/);
+6. [Publicidade infantil dentro de jogos digitais](https://www.jusbrasil.com.br/artigos/publicidade-infantil-dentro-dos-jogos-o-que-dizem-o-cdc-o-conanda-o-stj-e-o-eca-digital/7708737429);
+7. [Repositório do projeto (GitHub)](https://github.com/2026-2-MCC1/Projeto4.git);
+8. [Suno AI](https://suno.com/discover);
+9. [Tripo AI](https://www.tripo3d.ai/pt).
